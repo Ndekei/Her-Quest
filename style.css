@@ -422,12 +422,7 @@ ul {
 .hero__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    160deg,
-    rgba(42, 33, 24, 0.48) 0%,
-    rgba(42, 33, 24, 0.18) 50%,
-    rgba(42, 33, 24, 0.72) 100%
-  );
+  background: rgba(0, 0, 0, 0.30);
 }
 
 .hero__content {
