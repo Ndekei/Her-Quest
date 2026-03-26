@@ -204,32 +204,188 @@
     }, { passive: true });
   }
 
-  /* ----- JOIN FORM SUBMISSION ----- */
+  /* ----- JOIN FORM SUBMISSION (EmailJS) ----- */
   const joinForm = document.getElementById('joinForm');
   const formSuccess = document.getElementById('formSuccess');
+
+  // Initialize EmailJS — replace YOUR_PUBLIC_KEY with your actual EmailJS public key
+  if (typeof emailjs !== 'undefined') {
+    emailjs.init({ publicKey: 'YOUR_PUBLIC_KEY' });
+  }
 
   if (joinForm && formSuccess) {
     joinForm.addEventListener('submit', (e) => {
       e.preventDefault();
       const name = document.getElementById('firstName').value.trim();
       const email = document.getElementById('email').value.trim();
+      const countryCode = document.getElementById('countryCode').value;
+      const phone = document.getElementById('phone').value.trim();
 
-      if (!name || !email) {
-        // Simple visual shake
+      if (!name || !email || !phone) {
         joinForm.style.animation = 'shake 0.4s ease';
         setTimeout(() => { joinForm.style.animation = ''; }, 500);
         return;
       }
 
-      joinForm.style.opacity = '0';
-      joinForm.style.transform = 'translateY(-10px)';
-      joinForm.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+      const submitBtn = joinForm.querySelector('button[type="submit"]');
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = 'Sending...';
+      submitBtn.disabled = true;
 
-      setTimeout(() => {
-        joinForm.style.display = 'none';
-        formSuccess.style.display = 'block';
-      }, 450);
+      const fullPhone = countryCode + phone;
+      const templateParams = {
+        from_name: name,
+        from_email: email,
+        phone: fullPhone,
+        to_email: 'victorndekei@gmail.com',
+        reply_to: email
+      };
+
+      // Send to Her Quest team
+      const sendToTeam = typeof emailjs !== 'undefined'
+        ? emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+        : Promise.resolve();
+
+      // Send copy to the form filler
+      const sendCopy = typeof emailjs !== 'undefined'
+        ? emailjs.send('YOUR_SERVICE_ID', 'YOUR_COPY_TEMPLATE_ID', {
+            to_email: email,
+            from_name: name,
+            phone: fullPhone
+          })
+        : Promise.resolve();
+
+      Promise.all([sendToTeam, sendCopy])
+        .then(() => {
+          joinForm.style.opacity = '0';
+          joinForm.style.transform = 'translateY(-10px)';
+          joinForm.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+
+          setTimeout(() => {
+            joinForm.style.display = 'none';
+            formSuccess.style.display = 'block';
+          }, 450);
+        })
+        .catch(() => {
+          // Fallback: open mailto
+          const subject = encodeURIComponent('Her Quest Inquiry from ' + name);
+          const body = encodeURIComponent(
+            'Name: ' + name + '\nEmail: ' + email + '\nPhone: ' + fullPhone + '\n\nI would like to learn more about Her Quest.'
+          );
+          window.location.href = 'mailto:victorndekei@gmail.com?subject=' + subject + '&body=' + body + '&cc=' + encodeURIComponent(email);
+
+          submitBtn.textContent = originalText;
+          submitBtn.disabled = false;
+        });
     });
+  }
+
+  /* ----- GALLERY LIGHTBOX ----- */
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxImgWrap = document.getElementById('lightboxImgWrap');
+  const lightboxClose = document.getElementById('lightboxClose');
+  const lightboxPrev = document.getElementById('lightboxPrev');
+  const lightboxNext = document.getElementById('lightboxNext');
+  const lightboxCounter = document.getElementById('lightboxCounter');
+  const galleryItems = document.querySelectorAll('.gallery__item');
+
+  let currentIndex = 0;
+  let isZoomed = false;
+
+  const gallerySources = [];
+  galleryItems.forEach(item => {
+    const img = item.querySelector('.gallery__img');
+    if (img) gallerySources.push(img.src);
+  });
+
+  function openLightbox(index) {
+    currentIndex = index;
+    updateLightboxImage();
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+    resetZoom();
+  }
+
+  function updateLightboxImage() {
+    lightboxImg.src = gallerySources[currentIndex];
+    lightboxImg.alt = 'Her Quest gallery image ' + (currentIndex + 1);
+    lightboxCounter.textContent = (currentIndex + 1) + ' / ' + gallerySources.length;
+    resetZoom();
+  }
+
+  function nextImage() {
+    currentIndex = (currentIndex + 1) % gallerySources.length;
+    updateLightboxImage();
+  }
+
+  function prevImage() {
+    currentIndex = (currentIndex - 1 + gallerySources.length) % gallerySources.length;
+    updateLightboxImage();
+  }
+
+  function toggleZoom() {
+    isZoomed = !isZoomed;
+    if (isZoomed) {
+      lightboxImgWrap.classList.add('zoomed');
+      lightboxImg.style.transform = 'scale(2)';
+    } else {
+      resetZoom();
+    }
+  }
+
+  function resetZoom() {
+    isZoomed = false;
+    lightboxImgWrap.classList.remove('zoomed');
+    lightboxImg.style.transform = '';
+    lightboxImgWrap.scrollTop = 0;
+    lightboxImgWrap.scrollLeft = 0;
+  }
+
+  galleryItems.forEach((item, i) => {
+    item.addEventListener('click', () => openLightbox(i));
+  });
+
+  if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+  if (lightboxNext) lightboxNext.addEventListener('click', nextImage);
+  if (lightboxPrev) lightboxPrev.addEventListener('click', prevImage);
+  if (lightboxImg) lightboxImg.addEventListener('click', toggleZoom);
+
+  // Close on backdrop click
+  if (lightbox) {
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox || e.target === lightboxImgWrap) closeLightbox();
+    });
+  }
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox || !lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight') nextImage();
+    if (e.key === 'ArrowLeft') prevImage();
+  });
+
+  // Touch swipe for mobile
+  let touchStartX = 0;
+  if (lightbox) {
+    lightbox.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    lightbox.addEventListener('touchend', (e) => {
+      const touchEndX = e.changedTouches[0].screenX;
+      const diff = touchStartX - touchEndX;
+      if (Math.abs(diff) > 50) {
+        if (diff > 0) nextImage();
+        else prevImage();
+      }
+    }, { passive: true });
   }
 
 })();
