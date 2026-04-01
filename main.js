@@ -204,7 +204,7 @@
     }, { passive: true });
   }
 
-  /* ----- JOIN FORM SUBMISSION ----- */
+  /* ----- JOIN FORM SUBMISSION (Formsubmit.co) ----- */
   const joinForm = document.getElementById('joinForm');
   const formSuccess = document.getElementById('formSuccess');
 
@@ -213,23 +213,164 @@
       e.preventDefault();
       const name = document.getElementById('firstName').value.trim();
       const email = document.getElementById('email').value.trim();
+      const countryCode = document.getElementById('countryCode').value;
+      const phone = document.getElementById('phone').value.trim();
 
-      if (!name || !email) {
-        // Simple visual shake
+      if (!name || !email || !phone) {
         joinForm.style.animation = 'shake 0.4s ease';
         setTimeout(() => { joinForm.style.animation = ''; }, 500);
         return;
       }
 
-      joinForm.style.opacity = '0';
-      joinForm.style.transform = 'translateY(-10px)';
-      joinForm.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+      const submitBtn = joinForm.querySelector('button[type="submit"]');
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = 'Sending...';
+      submitBtn.disabled = true;
 
-      setTimeout(() => {
-        joinForm.style.display = 'none';
-        formSuccess.style.display = 'block';
-      }, 450);
+      const fullPhone = countryCode + phone;
+
+      const formData = new FormData();
+      formData.append('name', name);
+      formData.append('email', email);
+      formData.append('phone', fullPhone);
+      formData.append('_subject', 'Her Quest Inquiry from ' + name);
+      formData.append('_replyto', email);
+      formData.append('_cc', email);
+      formData.append('_template', 'table');
+
+      fetch('https://formsubmit.co/ajax/victorndekei@gmail.com', {
+        method: 'POST',
+        body: formData
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data.success) {
+            joinForm.style.opacity = '0';
+            joinForm.style.transform = 'translateY(-10px)';
+            joinForm.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+
+            setTimeout(() => {
+              joinForm.style.display = 'none';
+              formSuccess.style.display = 'block';
+            }, 450);
+          } else {
+            throw new Error('Submission failed');
+          }
+        })
+        .catch(() => {
+          submitBtn.textContent = 'Error — Try Again';
+          submitBtn.disabled = false;
+          setTimeout(() => { submitBtn.textContent = originalText; }, 3000);
+        });
     });
+  }
+
+  /* ----- GALLERY LIGHTBOX ----- */
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxImgWrap = document.getElementById('lightboxImgWrap');
+  const lightboxClose = document.getElementById('lightboxClose');
+  const lightboxPrev = document.getElementById('lightboxPrev');
+  const lightboxNext = document.getElementById('lightboxNext');
+  const lightboxCounter = document.getElementById('lightboxCounter');
+  const galleryItems = document.querySelectorAll('.gallery__item');
+
+  let currentIndex = 0;
+  let isZoomed = false;
+
+  const gallerySources = [];
+  galleryItems.forEach(item => {
+    const img = item.querySelector('.gallery__img');
+    if (img) gallerySources.push(img.src);
+  });
+
+  function openLightbox(index) {
+    currentIndex = index;
+    updateLightboxImage();
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+    resetZoom();
+  }
+
+  function updateLightboxImage() {
+    lightboxImg.src = gallerySources[currentIndex];
+    lightboxImg.alt = 'Her Quest gallery image ' + (currentIndex + 1);
+    lightboxCounter.textContent = (currentIndex + 1) + ' / ' + gallerySources.length;
+    resetZoom();
+  }
+
+  function nextImage() {
+    currentIndex = (currentIndex + 1) % gallerySources.length;
+    updateLightboxImage();
+  }
+
+  function prevImage() {
+    currentIndex = (currentIndex - 1 + gallerySources.length) % gallerySources.length;
+    updateLightboxImage();
+  }
+
+  function toggleZoom() {
+    isZoomed = !isZoomed;
+    if (isZoomed) {
+      lightboxImgWrap.classList.add('zoomed');
+      lightboxImg.style.transform = 'scale(2)';
+    } else {
+      resetZoom();
+    }
+  }
+
+  function resetZoom() {
+    isZoomed = false;
+    lightboxImgWrap.classList.remove('zoomed');
+    lightboxImg.style.transform = '';
+    lightboxImgWrap.scrollTop = 0;
+    lightboxImgWrap.scrollLeft = 0;
+  }
+
+  galleryItems.forEach((item, i) => {
+    item.addEventListener('click', () => openLightbox(i));
+  });
+
+  if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+  if (lightboxNext) lightboxNext.addEventListener('click', nextImage);
+  if (lightboxPrev) lightboxPrev.addEventListener('click', prevImage);
+  if (lightboxImg) lightboxImg.addEventListener('click', toggleZoom);
+
+  // Close on backdrop click
+  if (lightbox) {
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox || e.target === lightboxImgWrap) closeLightbox();
+    });
+  }
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox || !lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight') nextImage();
+    if (e.key === 'ArrowLeft') prevImage();
+  });
+
+  // Touch swipe for mobile
+  let touchStartX = 0;
+  if (lightbox) {
+    lightbox.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    lightbox.addEventListener('touchend', (e) => {
+      const touchEndX = e.changedTouches[0].screenX;
+      const diff = touchStartX - touchEndX;
+      if (Math.abs(diff) > 50) {
+        if (diff > 0) nextImage();
+        else prevImage();
+      }
+    }, { passive: true });
   }
 
 })();
