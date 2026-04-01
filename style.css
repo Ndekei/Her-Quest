@@ -1226,7 +1226,8 @@ ul {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: 280px;
-  gap: 1rem;
+  grid-auto-flow: dense;
+  gap: 0.5rem;
   margin-top: 4rem;
 }
 
@@ -1437,8 +1438,21 @@ ul {
   min-width: 160px;
 }
 
+.cta-section__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .cta-section__form .btn {
   margin-top: 1rem;
+  width: 100%;
+  max-width: 420px;
+}
+
+.cta-section__form-note {
+  max-width: 420px;
+  text-align: center;
 }
 
 /* ============================================================
@@ -1451,7 +1465,7 @@ ul {
   .naomi__img-wrap { max-width: 520px; }
   .cohort__pillars { grid-template-columns: 1fr; }
   .testimonials__grid { grid-template-columns: 1fr; gap: 1.5rem; }
-  .gallery__grid { grid-template-columns: repeat(3, 1fr); grid-auto-rows: 220px; }
+  .gallery__grid { grid-template-columns: repeat(3, 1fr); grid-auto-rows: 220px; gap: 0.4rem; }
 }
 
 @media (max-width: 1023px) {
@@ -1470,7 +1484,7 @@ ul {
 }
 
 @media (max-width: 768px) {
-  .gallery__grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 200px; }
+  .gallery__grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 200px; gap: 0.3rem; }
   .gallery__item--wide { grid-column: span 2; }
   .lightbox__prev { left: 0.5rem; }
   .lightbox__next { right: 0.5rem; }
@@ -1481,5 +1495,5 @@ ul {
   .hero__headline { font-size: 2.6rem; }
   .section-heading { font-size: 2rem; }
   .cohort__pillar { padding: 2rem 1.5rem; }
-  .gallery__grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 160px; }
+  .gallery__grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 160px; gap: 0.3rem; }
 }
