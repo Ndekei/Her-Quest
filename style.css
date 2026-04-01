@@ -1041,6 +1041,16 @@ ul {
   margin-bottom: 3rem;
 }
 
+.cta-section__form-fields {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
 .cta-section__form-row {
   display: flex;
   align-items: center;
@@ -1059,7 +1069,7 @@ ul {
   background: rgba(253, 250, 246, 0.1);
   color: var(--cream);
   outline: none;
-  width: 220px;
+  width: 100%;
   transition: border-color var(--transition), background var(--transition);
   backdrop-filter: blur(6px);
 }
@@ -1383,13 +1393,8 @@ ul {
 .cta-section__phone-row {
   display: flex;
   align-items: center;
-  gap: 0.8rem;
-  justify-content: center;
-  margin-top: 0.8rem;
-  flex-wrap: wrap;
-  max-width: 510px;
-  margin-left: auto;
-  margin-right: auto;
+  gap: 0.5rem;
+  width: 100%;
 }
 
 .cta-form-select {

@@ -415,13 +415,12 @@
       <p class="cta-section__sub reveal">Join a community of women discovering who they truly are in God.<br />The next
         cohort is forming now.</p>
       <form class="cta-section__form reveal" id="joinForm" novalidate>
-        <div class="cta-section__form-row">
+        <div class="cta-section__form-fields">
           <input type="text" id="firstName" name="firstName" placeholder="Your Name" class="cta-form-input" required
             autocomplete="given-name" />
           <input type="email" id="email" name="email" placeholder="Your Email Address" class="cta-form-input" required
             autocomplete="email" />
-        </div>
-        <div class="cta-section__phone-row">
+          <div class="cta-section__phone-row">
           <select id="countryCode" name="countryCode" class="cta-form-select" autocomplete="tel-country-code">
             <option value="+254">🇰🇪 +254</option>
             <option value="+1">🇺🇸 +1</option>
@@ -502,7 +501,8 @@
             <option value="+973">🇧🇭 +973</option>
             <option value="+965">🇰🇼 +965</option>
           </select>
-          <input type="tel" id="phone" name="phone" placeholder="Mobile Number" class="cta-form-input cta-form-input--phone" required autocomplete="tel-national" />
+            <input type="tel" id="phone" name="phone" placeholder="Mobile Number" class="cta-form-input cta-form-input--phone" required autocomplete="tel-national" />
+          </div>
         </div>
         <button type="submit" class="btn btn--clay">Send Inquiry</button>
         <p class="cta-section__form-note">Your inquiry will be sent to our team and a copy to your email.</p>
@@ -575,7 +575,6 @@
     </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script src="main.js"></script>
 </body>
 

@@ -204,14 +204,9 @@
     }, { passive: true });
   }
 
-  /* ----- JOIN FORM SUBMISSION (EmailJS) ----- */
+  /* ----- JOIN FORM SUBMISSION (Formsubmit.co) ----- */
   const joinForm = document.getElementById('joinForm');
   const formSuccess = document.getElementById('formSuccess');
-
-  // Initialize EmailJS — replace YOUR_PUBLIC_KEY with your actual EmailJS public key
-  if (typeof emailjs !== 'undefined') {
-    emailjs.init({ publicKey: 'YOUR_PUBLIC_KEY' });
-  }
 
   if (joinForm && formSuccess) {
     joinForm.addEventListener('submit', (e) => {
@@ -233,49 +228,39 @@
       submitBtn.disabled = true;
 
       const fullPhone = countryCode + phone;
-      const templateParams = {
-        from_name: name,
-        from_email: email,
-        phone: fullPhone,
-        to_email: 'victorndekei@gmail.com',
-        reply_to: email
-      };
 
-      // Send to Her Quest team
-      const sendToTeam = typeof emailjs !== 'undefined'
-        ? emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
-        : Promise.resolve();
+      const formData = new FormData();
+      formData.append('name', name);
+      formData.append('email', email);
+      formData.append('phone', fullPhone);
+      formData.append('_subject', 'Her Quest Inquiry from ' + name);
+      formData.append('_replyto', email);
+      formData.append('_cc', email);
+      formData.append('_template', 'table');
 
-      // Send copy to the form filler
-      const sendCopy = typeof emailjs !== 'undefined'
-        ? emailjs.send('YOUR_SERVICE_ID', 'YOUR_COPY_TEMPLATE_ID', {
-            to_email: email,
-            from_name: name,
-            phone: fullPhone
-          })
-        : Promise.resolve();
+      fetch('https://formsubmit.co/ajax/victorndekei@gmail.com', {
+        method: 'POST',
+        body: formData
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data.success) {
+            joinForm.style.opacity = '0';
+            joinForm.style.transform = 'translateY(-10px)';
+            joinForm.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
 
-      Promise.all([sendToTeam, sendCopy])
-        .then(() => {
-          joinForm.style.opacity = '0';
-          joinForm.style.transform = 'translateY(-10px)';
-          joinForm.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
-
-          setTimeout(() => {
-            joinForm.style.display = 'none';
-            formSuccess.style.display = 'block';
-          }, 450);
+            setTimeout(() => {
+              joinForm.style.display = 'none';
+              formSuccess.style.display = 'block';
+            }, 450);
+          } else {
+            throw new Error('Submission failed');
+          }
         })
         .catch(() => {
-          // Fallback: open mailto
-          const subject = encodeURIComponent('Her Quest Inquiry from ' + name);
-          const body = encodeURIComponent(
-            'Name: ' + name + '\nEmail: ' + email + '\nPhone: ' + fullPhone + '\n\nI would like to learn more about Her Quest.'
-          );
-          window.location.href = 'mailto:victorndekei@gmail.com?subject=' + subject + '&body=' + body + '&cc=' + encodeURIComponent(email);
-
-          submitBtn.textContent = originalText;
+          submitBtn.textContent = 'Error — Try Again';
           submitBtn.disabled = false;
+          setTimeout(() => { submitBtn.textContent = originalText; }, 3000);
         });
     });
   }
