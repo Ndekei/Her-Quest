@@ -18,7 +18,7 @@ Order follows the page from top to bottom.
 | 4 | **The Journey: feedback link** | Link to a feedback form for people who attended a programme (Google Form or similar) | URL | ☐ |
 | 5 | **Meet the Founder: Naomi's bio** | Confirm the draft line (interior designer, mentor, conference speaker, marriage counsellor) **and** list her marketplace / corporate experience: organisations, roles, boards, conferences | Short list, logos optional | ☐ |
 | 6 | **Quote band** | Scriptures or quotes to feature, with their source | 2–3 quotes, under 30 words each | ☐ |
-| 7 | **Community Voices** | **Real** written testimonials to replace the 3 sample ones, including dominion testimonials | Name or initials, cohort, 30–80 words, **written permission** | ☐ |
+| 7 | **Community Voices** | Done: real testimonials from Mercy Kagu, Terry Njerenga and Njeri Matiru. Still welcome: Njeri's cohort year and more dominion testimonials | Name, cohort, written permission | ☑ |
 | 8 | **In Their Own Words: video testimonials** | 3 short testimonial videos (like the one Maryann and two others recorded) | Vertical 9:16, 30–60 sec each. Instagram Reel link or MP4 | ☐ |
 | 9 | **In Their Own Words: session clip** | A clip from a past session, ideally one not posted anywhere before | Vertical or landscape, under 2 min | ☐ |
 | 10 | **Life After Her Quest: Women walking in dominion** | 2+ stories showing how the journey still works in past attendees' lives (practical, not just testimony) | 80–120 words each + photo, name, cohort | ☐ |
