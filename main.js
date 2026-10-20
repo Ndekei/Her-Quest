@@ -53,7 +53,7 @@
   /* ----- NAVIGATION: MOBILE BURGER MENU ----- */
   const burger = document.getElementById('navBurger');
   const mobileMenu = document.getElementById('navMobile');
-  const mobileLinks = document.querySelectorAll('.nav__mobile-link');
+  const mobileLinks = document.querySelectorAll('.nav__mobile-link, .nav__mobile-cta');
 
   if (burger && mobileMenu) {
     burger.addEventListener('click', () => {
@@ -73,10 +73,55 @@
     });
   }
 
-  /* ----- "COMING SOON" LINKS: don't jump to the top of the page ----- */
-  document.querySelectorAll('.nav__link--coming').forEach(link => {
+  /* ----- "COMING SOON" + PENDING LINKS: don't jump to the top of the page ----- */
+  document.querySelectorAll('.nav__link--coming, .awaiting-link').forEach(link => {
     link.addEventListener('click', (e) => e.preventDefault());
   });
+
+  /* ----- HER QUEST CALENDAR POP-UP -----
+     Off until there is a real event. To switch on, set enabled: true and fill
+     in the details. Add ?preview=announce to the URL to preview it anyway. */
+  const HQ_ANNOUNCEMENT = {
+    enabled: false,
+    id: 'event-id',            // change for each new event so it shows again
+    title: 'Upcoming event',
+    date: 'Date · Venue',
+    poster: '',                // e.g. 'assets/events/go-conference.jpg'
+    ctaText: 'See the calendar',
+    ctaHref: '#events',
+  };
+
+  const announce = document.getElementById('announce');
+  const previewAnnounce = new URLSearchParams(location.search).get('preview') === 'announce';
+  const announceKey = `hq-announce-dismissed-${HQ_ANNOUNCEMENT.id}`;
+  let announceDismissed = false;
+  try { announceDismissed = sessionStorage.getItem(announceKey) === '1'; } catch (e) { /* storage blocked */ }
+
+  if (announce && (previewAnnounce || (HQ_ANNOUNCEMENT.enabled && !announceDismissed))) {
+    document.getElementById('announceTitle').textContent = HQ_ANNOUNCEMENT.title;
+    document.getElementById('announceDate').textContent = HQ_ANNOUNCEMENT.date;
+    const cta = document.getElementById('announceCta');
+    cta.textContent = HQ_ANNOUNCEMENT.ctaText;
+    cta.href = HQ_ANNOUNCEMENT.ctaHref;
+    if (HQ_ANNOUNCEMENT.poster) {
+      const poster = document.getElementById('announcePoster');
+      poster.className = 'announce__poster';
+      poster.innerHTML = '';
+      const img = document.createElement('img');
+      img.src = HQ_ANNOUNCEMENT.poster;
+      img.alt = HQ_ANNOUNCEMENT.title;
+      poster.appendChild(img);
+    }
+    setTimeout(() => { announce.hidden = false; requestAnimationFrame(() => announce.classList.add('open')); }, 2500);
+
+    const closeAnnounce = () => {
+      announce.classList.remove('open');
+      setTimeout(() => { announce.hidden = true; }, 400);
+      try { sessionStorage.setItem(announceKey, '1'); } catch (e) { /* storage blocked */ }
+    };
+    document.getElementById('announceClose').addEventListener('click', closeAnnounce);
+    cta.addEventListener('click', closeAnnounce);
+  }
 
   /* ----- SCROLL REVEAL (Intersection Observer) ----- */
   const revealEls = document.querySelectorAll('.reveal:not(.hero__eyebrow):not(.hero__sub):not(.hero__actions)');
