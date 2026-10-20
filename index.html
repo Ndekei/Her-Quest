@@ -41,15 +41,15 @@
       <ul class="nav__links" id="navLinks">
         <li><a href="#about" class="nav__link">About</a></li>
         <li><a href="#journey" class="nav__link">The Journey</a></li>
-        <li><a href="#cohort" class="nav__link">The Cohort</a></li>
         <li><a href="#naomi" class="nav__link">Naomi</a></li>
         <li><a href="#gallery" class="nav__link">Gallery</a></li>
         <li>
-          <a href="#" class="nav__link nav__link--coming" aria-label="Online Courses — Coming Soon">
+          <a href="#" class="nav__link nav__link--coming" aria-disabled="true" aria-label="Online Courses — Coming Soon">
             Courses
             <span class="nav__coming-badge">Soon</span>
           </a>
         </li>
+        <li><a href="#contact" class="nav__link">Contact</a></li>
       </ul>
       <a href="#join" class="btn btn--primary nav__cta">Begin Your Quest</a>
       <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false">
@@ -61,11 +61,11 @@
       <ul class="nav__mobile-links">
         <li><a href="#about" class="nav__mobile-link">About</a></li>
         <li><a href="#journey" class="nav__mobile-link">The Journey</a></li>
-        <li><a href="#cohort" class="nav__mobile-link">The Cohort</a></li>
         <li><a href="#naomi" class="nav__mobile-link">Naomi</a></li>
         <li><a href="#gallery" class="nav__mobile-link">Gallery</a></li>
-        <li><a href="#" class="nav__mobile-link">Courses <span class="nav__coming-badge">Soon</span></a></li>
-        <li><a href="#join" class="btn btn--primary" style="display:inline-block;margin-top:1.5rem;">Begin Your
+        <li><a href="#" class="nav__mobile-link nav__link--coming" aria-disabled="true">Courses <span class="nav__coming-badge">Soon</span></a></li>
+        <li><a href="#contact" class="nav__mobile-link">Contact</a></li>
+        <li><a href="#join" class="nav__mobile-link btn btn--primary" style="display:inline-block;margin-top:1.5rem;">Begin Your
             Quest</a></li>
       </ul>
     </div>
@@ -85,7 +85,7 @@
         <span class="hero__word hero__word--italic reveal-word">will be</span>
         <span class="hero__word reveal-word">Quenched.</span>
       </h1>
-      <p class="hero__sub reveal">Discover your true identity as a woman of God.</p>
+      <p class="hero__sub reveal">Discover your true, God-given identity as a woman.</p>
       <div class="hero__actions reveal">
         <a href="#join" class="btn btn--primary">Begin Your Quest</a>
         <a href="#journey" class="btn btn--ghost">Discover More ↓</a>
@@ -122,7 +122,7 @@
   </section>
 
   <!-- ===== PROBLEM — THE ENDLESS SEARCH ===== -->
-  <section class="problem" id="journey">
+  <section class="problem" id="reality">
     <div class="problem__inner container">
       <div class="problem__text">
         <p class="section-label reveal">The Reality</p>
@@ -168,7 +168,7 @@
         take her place and be <strong>effective, relevant and influential in God's agenda here on earth.</strong>
       </p>
       <div class="solution__cta-wrap reveal">
-        <a href="#cohort" class="btn btn--outlined">Explore the Journey ↓</a>
+        <a href="#journey" class="btn btn--outlined">Explore the Journey ↓</a>
       </div>
     </div>
     <!-- Decorative background texture -->
@@ -176,9 +176,8 @@
   </section>
 
   <!-- ===== COHORT — 10-WEEK PROGRAM ===== -->
-  <section class="cohort" id="cohort">
+  <section class="cohort" id="journey">
     <div class="container">
-      <p class="section-label section-label--light reveal">The Journey</p>
       <h2 class="section-heading section-heading--light reveal">
         The Her Quest Journey.
       </h2>
@@ -205,6 +204,8 @@
       </div>
 
       <!-- Three Pillars -->
+      <p class="cohort__pillars-intro reveal">Every season of Her Quest is built on three pillars — learning together each
+        week, pausing to meet in person, and celebrating the finish.</p>
       <div class="cohort__pillars">
         <div class="cohort__pillar reveal" data-delay="0">
           <div class="cohort__pillar-icon" aria-hidden="true">
@@ -229,12 +230,12 @@
               <path d="M9 12h10M9 16h6" stroke="#C2845A" stroke-width="1.5" stroke-linecap="round" />
             </svg>
           </div>
-          <h3 class="cohort__pillar-title">Mid-Season Meetups</h3>
+          <h3 class="cohort__pillar-title">Her Checkpoint</h3>
           <p class="cohort__pillar-desc">
             In the heart of the season, we come together in person. These curated gatherings go deeper — creating sacred
             space for community, prayer, and real, heart-to-heart conversation.
           </p>
-          <span class="cohort__pillar-tag">In-Person</span>
+          <span class="cohort__pillar-tag">Mid-Season · In-Person</span>
         </div>
 
         <div class="cohort__pillar reveal" data-delay="300">
@@ -245,9 +246,9 @@
                 stroke-linejoin="round" />
             </svg>
           </div>
-          <h3 class="cohort__pillar-title">Grand Graduation</h3>
+          <h3 class="cohort__pillar-title">Her Coronation</h3>
           <p class="cohort__pillar-desc">
-            At season's end, we celebrate. An elaborate, joyful Graduation event — a moment of recognition, testimony,
+            At season's end, we celebrate. Her Coronation is an elaborate, joyful event — a moment of recognition, testimony,
             and shared triumph for every woman who walked the journey to the end.
           </p>
           <span class="cohort__pillar-tag">End-of-Season Celebration</span>
@@ -283,6 +284,11 @@
         <p class="body-text reveal">
           Through years of ministry, personal journey, and anchored study of the Word, Naomi has crafted a framework
           that meets women exactly where they are — and walks them, step by step, into who they were always meant to be.
+        </p>
+        <!-- DRAFT from team feedback — confirm details with Naomi before publishing -->
+        <p class="body-text reveal">
+          Beyond Her Quest, Naomi is an interior designer, a mentor to women, a conference speaker and a marriage
+          counsellor — bringing the same care for beauty, order and wholeness to every space she serves in.
         </p>
         <a href="#join" class="btn btn--primary reveal" style="margin-top:2rem;">Walk This Journey with Naomi →</a>
       </div>
@@ -540,17 +546,21 @@
           <ul class="footer__nav-list">
             <li><a href="#about" class="footer__nav-link">About</a></li>
             <li><a href="#journey" class="footer__nav-link">The Journey</a></li>
-            <li><a href="#cohort" class="footer__nav-link">The Cohort</a></li>
             <li><a href="#naomi" class="footer__nav-link">Naomi</a></li>
             <li><a href="#gallery" class="footer__nav-link">Gallery</a></li>
             <li><a href="#join" class="footer__nav-link">Join Us</a></li>
+            <li><a href="#contact" class="footer__nav-link">Contact Us</a></li>
           </ul>
           <p class="footer__coming">
             <span class="footer__coming-dot" aria-hidden="true">✦</span>
             Online Courses — Coming Soon
           </p>
         </nav>
-        <div class="footer__social">
+        <div class="footer__social" id="contact">
+          <p class="footer__social-label">Contact Us</p>
+          <p class="footer__contact">For help or enquiries, write to
+            <a href="mailto:info@herquest.co.ke" class="footer__contact-link">info@herquest.co.ke</a>
+          </p>
           <p class="footer__social-label">Follow the Journey</p>
           <div class="footer__social-links">
             <a href="https://www.instagram.com/herquestke?igsh=MWRsaTlianp5dzR4Yw==" target="_blank" rel="noopener noreferrer" class="footer__social-link" aria-label="Instagram">

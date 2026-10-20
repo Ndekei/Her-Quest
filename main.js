@@ -73,6 +73,11 @@
     });
   }
 
+  /* ----- "COMING SOON" LINKS: don't jump to the top of the page ----- */
+  document.querySelectorAll('.nav__link--coming').forEach(link => {
+    link.addEventListener('click', (e) => e.preventDefault());
+  });
+
   /* ----- SCROLL REVEAL (Intersection Observer) ----- */
   const revealEls = document.querySelectorAll('.reveal:not(.hero__eyebrow):not(.hero__sub):not(.hero__actions)');
 
