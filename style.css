@@ -1693,20 +1693,6 @@ ul {
 .video-intro { background: var(--beige); padding: 7rem 0; }
 
 /* ---- Journey additions ---- */
-.cohort__checkpoint { margin-top: 5rem; }
-.cohort__checkpoint-label {
-  font-size: 0.7rem;
-  font-weight: 500;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--clay-light);
-  margin-bottom: 1.2rem;
-}
-.cohort__checkpoint-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-}
 .cohort__join { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
 .cohort__feedback {
   font-size: 0.9rem;
@@ -1765,14 +1751,6 @@ ul {
 }
 .dominion__heading em { font-style: italic; color: var(--gold); }
 .dominion__stories .awaiting:first-child { margin-top: 0; }
-
-/* ---- Gallery additions ---- */
-.gallery-more { background: var(--beige); padding: 0 0 7rem; }
-.gallery-more__grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-}
 
 /* ---- Events / calendar ---- */
 .events { background: var(--cream); padding: 8rem 0; }
@@ -1916,6 +1894,6 @@ ul {
 @media (max-width: 640px) {
   .awaiting--portrait .awaiting__badge { font-size: 0.55rem; letter-spacing: 0.08em; }
   .awaiting--portrait .awaiting__play { width: 48px; height: 48px; }
-  .cohort__checkpoint-grid, .gallery-more__grid, .events__grid { grid-template-columns: 1fr; }
+  .events__grid { grid-template-columns: 1fr; }
   .awaiting--text { padding: 1.5rem; }
 }
