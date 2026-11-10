@@ -1253,21 +1253,27 @@ ul {
 }
 
 .footer__social-link {
-  color: rgba(237, 229, 216, 0.45);
-  transition: color var(--transition), transform var(--transition);
+  color: #fff;
+  transition: transform var(--transition), box-shadow var(--transition), filter var(--transition);
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 42px;
-  height: 42px;
-  border: 1px solid rgba(194, 132, 90, 0.15);
+  width: 46px;
+  height: 46px;
   border-radius: 50%;
 }
 
+.footer__social-link--instagram {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+}
+.footer__social-link--facebook { background: #1877F2; }
+.footer__social-link--whatsapp { background: #25D366; }
+.footer__social-link--email    { background: var(--clay); }
+
 .footer__social-link:hover {
-  color: var(--clay-light);
-  border-color: rgba(194, 132, 90, 0.4);
   transform: translateY(-3px);
+  filter: brightness(1.08);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
 }
 
 .footer__bottom {
@@ -1722,33 +1728,15 @@ ul {
   color: var(--clay-light);
 }
 
-/* ---- Video testimonials + dominion stories ---- */
+/* ---- Video testimonials ---- */
 .voices-video { background: var(--warm-white); padding: 7rem 0; }
 .voices-video__grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.2rem;
-  margin-top: 3.5rem;
+  max-width: 820px;
+  margin: 3.5rem auto 0;
 }
-.dominion {
-  display: grid;
-  grid-template-columns: 1fr 1.4fr;
-  gap: 4rem;
-  align-items: start;
-  margin-top: 6rem;
-  padding-top: 5rem;
-  border-top: 1px solid var(--beige-dark);
-}
-.dominion__heading {
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 400;
-  line-height: 1.15;
-  color: var(--dark);
-  margin-bottom: 1.5rem;
-}
-.dominion__heading em { font-style: italic; color: var(--gold); }
-.dominion__stories .awaiting:first-child { margin-top: 0; }
 
 /* ---- Events / calendar ---- */
 .events { background: var(--cream); padding: 8rem 0; }
@@ -1885,7 +1873,8 @@ ul {
 
 @media (max-width: 1023px) {
   .voices-video__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.8rem; }
-  .dominion, .circle__inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  .voices-video__grid > :last-child:nth-child(odd) { grid-column: 1 / -1; justify-self: center; width: calc(50% - 0.4rem); }
+  .circle__inner { grid-template-columns: 1fr; gap: 2.5rem; }
   .events__grid { grid-template-columns: 1fr 1fr; }
 }
 

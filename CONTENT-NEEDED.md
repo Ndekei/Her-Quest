@@ -12,20 +12,20 @@ Order follows the page from top to bottom.
 
 | # | Section on the site | What we need | Format / length | Status |
 |---|---|---|---|---|
-| 1 | **Our Story** (after The Invitation) | Done: Naomi's words from the manual preface, plus "10 cohorts and counting". More numbers can be added later if wanted | n/a | ☑ |
+| 1 | **Our Story** (after The Invitation) | Done: Naomi's words from the manual preface | n/a | ☑ |
 | 2 | **Watch: Hear it from Naomi** | Video of Naomi summarising the programme | Landscape 16:9, **max 3 min**. YouTube/Vimeo link or MP4, plus one still image | ☐ |
 | 3 | ~~The Journey: Moments from Her Checkpoint~~ | Merged into the one gallery (#11) | n/a | ☑ |
 | 4 | **The Journey: feedback link** | Link to a feedback form for people who attended a programme (Google Form or similar) | URL | ☐ |
 | 5 | **Meet the Founder: Naomi's bio** | Confirm the draft line (interior designer, mentor, conference speaker, marriage counsellor) **and** list her marketplace / corporate experience: organisations, roles, boards, conferences | Short list, logos optional | ☐ |
-| 6 | **Quote band** | Scriptures or quotes to feature, with their source | 2–3 quotes, under 30 words each | ☐ |
+| 6 | **Scripture band** | Done: Genesis 1:27 (NIV) | n/a | ☑ |
 | 7 | **Community Voices** | Done: real testimonials from Mercy Kagu, Terry Njerenga and Njeri Matiru. Still welcome: Njeri's cohort year and more dominion testimonials | Name, cohort, written permission | ☑ |
 | 8 | **In Their Own Words: video testimonials** | 3 short testimonial videos (like the one Maryann and two others recorded) | Vertical 9:16, 30–60 sec each. Instagram Reel link or MP4 | ☐ |
-| 9 | **In Their Own Words: session clip** | A clip from a past session, ideally one not posted anywhere before | Vertical or landscape, under 2 min | ☐ |
-| 10 | **Life After Her Quest: Women walking in dominion** | 2+ stories showing how the journey still works in past attendees' lives (practical, not just testimony) | 80–120 words each + photo, name, cohort | ☐ |
+| 9 | ~~In Their Own Words: session clip~~ | Removed. Not needed | n/a | ☑ |
+| 10 | ~~Life After Her Quest~~ | Removed. Covered by Community Voices and In Their Own Words | n/a | ☑ |
 | 11 | **Gallery** | Done: 8 new photos added (cohorts, team, Her Coronation, certificate, classroom) and mixed into one gallery. More photos are always welcome and go straight into the same gallery | Landscape preferred, ≥1600px wide | ☑ |
 | 12 | **Her Quest Calendar (Events)** | Upcoming events: e.g. Go Conference, She Blooms, next cohort intake | Per event: title, date & time, venue/link, poster (4:5), registration link | ☐ |
 | 13 | **Event pop-up** | Which event (if any) should pop up when someone opens the site | Same details as #12. Can be switched on and off | ☐ |
-| 14 | **Join Her Circle** | 2–3 sentence description of Her Circle, who it is for, the link/platform to join, and which details to collect (name, email, phone, city, cohort… confirm) | Text + URL | ☐ |
+| 14 | **Join Her Circle** | Description done (for alumni). Still needed: the link/platform to join, and confirm the details to collect (name, email, phone, city, cohort) | URL | ☐ |
 | 15 | **FAQ** | Answers to the 7 draft questions (who can join, not only for ministers, schedule, Checkpoint & Coronation, fee, next intake, where to get help). Add or remove questions | 1–3 sentences per answer | ☐ |
 
 ## Already done (no content needed)
@@ -36,7 +36,7 @@ Order follows the page from top to bottom.
 - Bigger logo, bolder text, more legible "A Christian Women's Ministry"
 - "1" no longer looks like "I"
 - Home page line reworded so it doesn't read as being for preachers only
-- Contact Us → info@herquest.co.ke (menu + footer). Social links in the footer
+- Contact Us → info@herquest.co.ke (menu + footer). Social links in the footer, in brand colours
 
 ## For the web team
 
