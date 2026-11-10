@@ -12,7 +12,7 @@ Order follows the page from top to bottom.
 
 | # | Section on the site | What we need | Format / length | Status |
 |---|---|---|---|---|
-| 1 | **Our Story** (under About) | Short history of Her Quest: how and when it started, what inspired it, first cohort, growth since. Optional: 3–5 milestones with years for the timeline. | 150–250 words | ☐ |
+| 1 | **Our Story** (after The Answer) | Partly done: Naomi's words from the manual preface are in. Still needed: a short paragraph on growth since the start (first cohort, milestones, number of cohorts and women reached). No timeline | 1 short paragraph | ☐ |
 | 2 | **Watch: Hear it from Naomi** | Video of Naomi summarising the programme | Landscape 16:9, **max 3 min**. YouTube/Vimeo link or MP4, plus one still image | ☐ |
 | 3 | ~~The Journey: Moments from Her Checkpoint~~ | Merged into the one gallery (#11) | n/a | ☑ |
 | 4 | **The Journey: feedback link** | Link to a feedback form for people who attended a programme (Google Form or similar) | URL | ☐ |

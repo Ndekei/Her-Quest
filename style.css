@@ -664,6 +664,15 @@ ul {
   margin: 0 auto 2.5rem;
 }
 
+.solution__tagline {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  color: var(--gold);
+  text-align: center;
+  margin-top: 2.5rem;
+}
+
 .solution__cta-wrap {
   text-align: center;
   margin-top: 3rem;
@@ -1657,25 +1666,6 @@ ul {
   margin: 0.5rem 0;
 }
 
-.awaiting__timeline {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-  gap: 1rem;
-  width: 100%;
-  margin-top: 1rem;
-  padding-top: 1.2rem;
-  border-top: 1px dashed var(--beige-dark);
-  font-size: 0.85rem;
-  color: var(--text-light);
-}
-
-.awaiting__timeline span {
-  display: block;
-  font-family: var(--font-display);
-  font-size: 1.3rem;
-  color: var(--clay);
-}
-
 .awaiting-inline {
   font-style: italic;
   color: var(--text-light);
@@ -1688,6 +1678,14 @@ ul {
 
 /* ---- Our Story ---- */
 .story { background: var(--warm-white); padding: 7rem 0; }
+.story__signature {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.3rem;
+  color: var(--clay);
+  margin-top: 2rem;
+}
+.story__signature::before { content: '— '; }
 
 /* ---- Watch (Naomi video) ---- */
 .video-intro { background: var(--beige); padding: 7rem 0; }
