@@ -15,7 +15,7 @@ Order follows the page from top to bottom.
 | 1 | **Our Story** (after The Invitation) | Done: Naomi's words from the manual preface | n/a | ☑ |
 | 2 | **Watch: Hear it from Naomi** | Video of Naomi summarising the programme | Landscape 16:9, **max 3 min**. YouTube/Vimeo link or MP4, plus one still image | ☐ |
 | 3 | ~~The Journey: Moments from Her Checkpoint~~ | Merged into the one gallery (#11) | n/a | ☑ |
-| 4 | **The Journey: feedback link** | Link to a feedback form for people who attended a programme (Google Form or similar) | URL | ☐ |
+| 4 | **The Journey: feedback link** | Done: Google Form linked (The Journey + footer). Placeholder, swap if the form changes | n/a | ☑ |
 | 5 | **Meet the Founder: Naomi's bio** | Confirm the draft line (interior designer, mentor, conference speaker, marriage counsellor) **and** list her marketplace / corporate experience: organisations, roles, boards, conferences | Short list, logos optional | ☐ |
 | 6 | **Scripture band** | Done: Genesis 1:27 (NIV) | n/a | ☑ |
 | 7 | **Community Voices** | Done: real testimonials from Mercy Kagu, Terry Njerenga and Njeri Matiru. Still welcome: Njeri's cohort year and more dominion testimonials | Name, cohort, written permission | ☑ |
